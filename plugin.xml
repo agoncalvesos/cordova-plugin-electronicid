@@ -170,7 +170,7 @@
                 <pod name="VideoID" spec="7.0.11"/>
             </pods>
         </podspec>-->
-
+        <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
         <pods-config ios-min-version="10.0" use-frameworks="true"/>
         <pod id="VideoID" version="7.0.11"/>
 
