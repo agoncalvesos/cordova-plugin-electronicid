@@ -5,9 +5,11 @@
         <clobbers target="CordovaElectronicId" />
     </js-module>
 
-    <dependency id="cordova-plugin-cocoapod-support" version="1.6.2"/>
+    <!--<dependency id="cordova-plugin-cocoapod-support" version="1.6.2"/>-->
+    <hook type="before_plugin_install" src="hooks/pods_fix.js" />
 
     <platform name="ios">
+
         <config-file parent="/*" target="config.xml">
             <feature name="CordovaElectronicId">
                 <param name="ios-package" value="CordovaElectronicId"/>
@@ -162,8 +164,8 @@
             </dict>
         </config-file>
         <dependency id="cordova-plugin-add-swift-support@1.7.2"/>
-        <!--<framework src="VideoID" type="podspec" spec="7.0.11" embed="true" />
-        <framework src="Alamofire" type="podspec" spec="5.1.0" embed="true" />-->
+        <framework src="VideoID" type="podspec" spec="7.0.11" embed="true" />
+        <!--<framework src="Alamofire" type="podspec" spec="5.1.0" embed="true" />-->
 
         <!--<podspec>
             <config>
@@ -173,8 +175,8 @@
                 <pod name="VideoID" spec="7.0.11"/>
             </pods>
         </podspec>-->
-        <pods-config ios-min-version="10.0" use-frameworks="true"/>
-        <pod id="VideoID" version="7.0.11"/>
+        <!--<pods-config ios-min-version="10.0" use-frameworks="true"/>
+        <pod id="VideoID" version="7.0.11"/>-->
 
     </platform>
 
