@@ -22,7 +22,7 @@ module.exports = function(context) {
         if (err) {
           throw new Error('Unable to find Podfile: ' + err);
         }
-          //data = 'ENV[\'SWIFT_VERSION\'] = \'5\'' + data;
+          data = 'ENV[\'SWIFT_VERSION\'] = \'5\'' + data;
 
           if (data.includes('pod \'FLEX\', :git => \'https://github.com/OutSystems/FLEX/\', :tag => \'3.0.0-OS3\', :configurations => [\'Debug\']')){
             var lines = data.split('\n');
