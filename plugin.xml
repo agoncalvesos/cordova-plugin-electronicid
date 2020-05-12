@@ -164,7 +164,7 @@
             </dict>
         </config-file>
         <dependency id="cordova-plugin-add-swift-support@1.7.2"/>
-        <framework src="VideoID" type="podspec" spec="7.0.11" embed="true" />
+        <framework src="VideoID" type="podspec" spec="7.1.0" embed="true" />
         <!--<framework src="Alamofire" type="podspec" spec="5.1.0" embed="true" />-->
 
         <!--<podspec>

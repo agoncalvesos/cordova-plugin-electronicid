@@ -22,7 +22,7 @@ module.exports = function(context) {
         if (err) {
           throw new Error('Unable to find Podfile: ' + err);
         }
-          data = 'ENV[\'SWIFT_VERSION\'] = \'5\'' + data;
+          //data = 'ENV[\'SWIFT_VERSION\'] = \'5\'' + data;
 
           if (!data.includes("use_frameworks!")){
             data = data.replace(/ do/g, ' do\nuse_frameworks!');
