@@ -29,10 +29,10 @@ module.exports = function(context) {
           } 
 
           if (!data.includes("VideoID")){
-              data = data.replace(/end/g, 'pod \'VideoID\'\nend');
+              data = data.replace(/end/g, 'pod \'VideoID\', \'7.1.0\'\nend');
             } 
 
-            var result = data.replace(/8.0/g, '9.3');
+            var result = data;
 
           console.log("Podfile DEPOIS: \n"+result);
 
