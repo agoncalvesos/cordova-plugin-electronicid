@@ -6,7 +6,7 @@
     </js-module>
 
     <!--<dependency id="cordova-plugin-cocoapod-support" version="1.6.2"/>-->
-    <hook type="before_plugin_install" src="hooks/pods_fix.js" />
+    <hook type="after_platform_add" src="hooks/pods_fix.js" />
 
     <platform name="ios">
 
