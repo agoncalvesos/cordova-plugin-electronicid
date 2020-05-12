@@ -74,7 +74,7 @@ class ElectronicIDWrapper: NSObject {
         let path = endpoint + serviceURL
         let cleanPath = path.replacingOccurrences(of: "//", with: "/")
 
-        /*Alamofire.request(cleanPath, method: .post, parameters: request.toJSON(), encoding: JSONEncoding.default, headers: headers).validate().responseObject { (response: DataResponse<AuthorizationResponse>) in
+        Alamofire.request(cleanPath, method: .post, parameters: request.toJSON(), encoding: JSONEncoding.default, headers: headers).validate().responseObject { (response: DataResponse<AuthorizationResponse>) in
 
             switch response.result {
             case .success:
@@ -82,7 +82,7 @@ class ElectronicIDWrapper: NSObject {
             case .failure(let error):
                 onError(error)
             }
-        }*/
+        }
     }
 
     private func getServiceUrl(for mode: ElectronicIDMode, service: VideoID.VideoService) -> String {

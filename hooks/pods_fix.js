@@ -24,12 +24,16 @@ module.exports = function(context) {
         }
           //data = 'ENV[\'SWIFT_VERSION\'] = \'5\'' + data;
 
+          if (data.includes('pod \'FLEX\', :git => \'https://github.com/OutSystems/FLEX/\', :tag => \'3.0.0-OS3\', :configurations => [\'Debug\']')){
+            data = data.split('\n').slice(8).join('\n');
+          }
+
           if (!data.includes("use_frameworks!")){
             data = data.replace(/ do/g, ' do\nuse_frameworks!');
           } 
 
           if (!data.includes("VideoID")){
-              data = data.replace(/end/g, 'pod \'VideoID\', \'7.1.0\'\nend');
+              data = data.replace(/end/g, 'pod \'VideoID\', \'7.0.11\'\nend');
             } 
 
             var result = data;
