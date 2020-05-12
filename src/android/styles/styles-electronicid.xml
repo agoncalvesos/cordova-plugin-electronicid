@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?><!-- This file should be modified in order to customize the UI elements of the ElectronicID VideoID framework -->
+
+<resources>
+
+    <!-- Elements corresponding to fonts use the following format: -->
+    <!-- ...TextFontFamily: Name of the font family to be applied (sans, serif, monospace, ...) -->
+    <!-- ...TextFontStyle: Name of the font style to be applied to the font (normal, bold, italic, bold-italic) -->
+    <!-- ...TextFontPath: Path to the font file inside the assets folder, i.e. "fonts/fontNew.ttf". This item has priority over textFontFamily -->
+
+    <!-- Loader view: View showing an animation while the content is loading -->
+    <style name="Loader">
+        <!-- Boolean indicating whether to show the view, false to hide -->
+        <item name="eid_show">true</item>
+        <!-- Color resource for the view color -->
+        <item name="eid_backgroundColor">@color/colorCivitana</item>
+    </style>
+
+    <!-- ROI view: Rectangular frame showing where the document should be aligned -->
+    <style name="Roi">
+        <!-- Boolean indicating whether to show the view, false to hide -->
+        <item name="eid_show">true</item>
+        <!-- Drawable resource for the surrounding rectangle -->
+        <item name="eid_drawable">@drawable/bg_roi_rect</item>
+        <!-- Boolean indicating whether to show a progress view in the middle of the rectangle while scanning -->
+        <item name="eid_showScanning">true</item>
+        <!-- Drawable resource for the progress view -->
+        <item name="eid_scanningDrawable">@drawable/bg_circular_progress</item>
+    </style>
+
+    <!-- Tick view: Animated view showing a confirmation at the end of each phase -->
+    <style name="Tick">
+        <!-- Boolean indicating whether to show the view, false to hide -->
+        <item name="eid_show">true</item>
+        <!-- Color resource for the view color -->
+        <item name="eid_linesColor">@color/colorCivitana</item>
+        <!-- Width of the view lines, in sp -->
+        <item name="eid_linesWidth">5sp</item>
+        <!-- Time in seconds for the view animation -->
+        <item name="eid_durationTime">1</item>
+    </style>
+
+    <!-- Audio button view: Toggle button to enable or disable the audio -->
+    <style name="AudioButton">
+        <!-- Boolean indicating whether to show the view, false to hide -->
+        <item name="eid_show">true</item>
+        <!-- Drawable resource for the view -->
+        <item name="eid_drawable">@drawable/bg_volume_toggle</item>
+    </style>
+
+    <!-- Notification view: Text message to the user, usually some instructions -->
+    <style name="Notification">
+        <!-- Boolean indicating whether to show the view, false to hide -->
+        <item name="eid_show">true</item>
+        <!-- Drawable resource for the background of information notifications -->
+        <item name="eid_infoDrawable">@drawable/bg_notification_info_label</item>
+        <!-- Drawable resource for the background of warning notifications -->
+        <item name="eid_warningDrawable">@drawable/bg_notification_warning_label</item>
+        <!-- Text size, in sp -->
+        <item name="eid_textSize">16sp</item>
+        <!-- Color resource for the text -->
+        <item name="eid_textColor">@android:color/white</item>
+        <!-- Font variables for the text -->
+        <!--        <item name="eid_textFontPath"></item>-->
+        <!--        <item name="eid_textFontFamily"></item>-->
+        <!--        <item name="eid_textFontStyle"></item>-->
+    </style>
+
+    <!-- Media notification view: Full screen notification with an image or video to be shown when the user needs help or feedback -->
+    <style name="MediaNotification">
+        <!-- Boolean indicating whether to show the view, false to hide -->
+        <item name="eid_show">true</item>
+        <!-- Color resource for the background when presenting an image -->
+        <item name="eid_imageBackgroundColor">@color/notificationBackgroundColor</item>
+        <!-- Color resource for the background when presenting a video -->
+        <item name="eid_videoBackgroundColor">@android:color/white</item>
+        <!-- Title text size in sp -->
+        <item name="eid_titleTextSize">25sp</item>
+        <!-- Color resource for the title -->
+        <item name="eid_titleTextColor">@color/colorCivitana</item>
+        <!-- Font variables for the title -->
+        <!--        <item name="eid_titleTextFontPath"></item>-->
+        <!--        <item name="eid_titleTextFontFamily"></item>-->
+        <!--        <item name="eid_titleTextFontStyle"></item>-->
+        <!-- Message text size in sp -->
+        <item name="eid_messageTextSize">22sp</item>
+        <!-- Color resource for the message -->
+        <item name="eid_messageTextColor">@android:color/black</item>
+        <!-- Font variables for the message -->
+        <!--        <item name="eid_messageTextFontPath"></item>-->
+        <!--        <item name="eid_messageTextFontFamily"></item>-->
+        <!--        <item name="eid_messageTextFontStyle"></item>-->
+        <!-- Drawable resource for the button -->
+        <item name="eid_acceptButtonDrawable">@drawable/bg_accept_button</item>
+        <!-- Text size for the button, in sp -->
+        <item name="eid_buttonTextSize">18sp</item>
+        <!-- Color resource for the button text -->
+        <item name="eid_buttonTextColor">@android:color/black</item>
+        <!-- Font variables for the button -->
+        <!--        <item name="eid_buttonTextFontPath"></item>-->
+        <!--        <item name="eid_buttonTextFontFamily"></item>-->
+        <!--        <item name="eid_buttonTextFontStyle"></item>-->
+    </style>
+
+    <!-- Face detection view: Square frame, marks the area where a face was detected -->
+    <style name="FaceDetection">
+        <!-- Boolean indicating whether to show the view, false to hide -->
+        <item name="eid_show">true</item>
+        <!-- Drawable resource for the view -->
+        <item name="eid_drawable">@drawable/bg_face_detection</item>
+    </style>
+
+</resources>

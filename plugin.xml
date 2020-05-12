@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<plugin id="pluginCordovaElectronicId" version="0.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>CordovaElectronicId</name>
+    <js-module name="CordovaElectronicId" src="www/CordovaElectronicId.js">
+        <clobbers target="CordovaElectronicId" />
+    </js-module>
+
+    <dependency id="cordova-plugin-cocoapod-support" version="1.6.2"/>
+
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="CordovaElectronicId">
+                <param name="ios-package" value="CordovaElectronicId"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+        <source-file src="src/ios/ElectronicIDWrapper.swift" />
+        <source-file src="src/ios/ElectronicId.swift" />
+        <config-file parent="NSCameraUsageDescription" target="*-Info.plist">
+            <string>Camera access required in order to use electronicID</string>
+        </config-file>
+        <config-file parent="NSMicrophoneUsageDescription" target="*-Info.plist">
+            <string>Microphone access required in order to use electronicID</string>
+        </config-file>
+        <config-file parent="eIDCustomization" target="*-Info.plist">
+            <dict>
+                <key>DetectionView</key>
+                <dict>
+                    <key>showDocumentDetection</key>
+                    <false/>
+                    <key>showFaceDetection</key>
+                    <true/>
+                    <key>documentLinesColor</key>
+                    <string>B9C500</string>
+                    <key>documentLinesWidth</key>
+                    <integer>5</integer>
+                    <key>documentBackgroundColor</key>
+                    <string>8D9A00</string>
+                    <key>faceLineWidth</key>
+                    <integer>5</integer>
+                    <key>faceStrokeColor</key>
+                    <string>B9C500</string>
+                </dict>
+                <key>RoiView</key>
+                <dict>
+                    <key>show</key>
+                    <true/>
+                    <key>backgroundColor</key>
+                    <string>8D9A00</string>
+                    <key>linesColor</key>
+                    <string>EAEAEA</string>
+                    <key>linesColorSuccess</key>
+                    <string>B9C500</string>
+                    <key>linesWidth</key>
+                    <integer>3</integer>
+                </dict>
+                <key>TickView</key>
+                <dict>
+                    <key>show</key>
+                    <true/>
+                    <key>linesColor</key>
+                    <string>B9C500</string>
+                    <key>linesWidth</key>
+                    <integer>5</integer>
+                    <key>durationTime</key>
+                    <integer>1</integer>
+                </dict>
+                <key>AudioButtonView</key>
+                <dict>
+                    <key>onImage</key>
+                    <string>audioOn</string>
+                    <key>offImage</key>
+                    <string>audioOff</string>
+                    <key>backgroundColor</key>
+                    <string>clear</string>
+                </dict>
+                <key>NotificationView</key>
+                <dict>
+                    <key>show</key>
+                    <true/>
+                    <key>textColor</key>
+                    <string>FFFFFF</string>
+                    <key>backgroundColor</key>
+                    <string>8D9A00</string>
+                    <key>backgroundColorWarningColor</key>
+                    <string>F2EA00</string>
+                    <key>textSize</key>
+                    <integer>20</integer>
+                    <key>fullScreen</key>
+                    <true/>
+                    <key>textFont</key>
+                    <string>nil</string>
+                    <key>textFontStyle</key>
+                    <string>bold</string>
+                </dict>
+                <key>WaitingView</key>
+                <dict>
+                    <key>show</key>
+                    <true/>
+                    <key>backgroundColor</key>
+                    <string>EAEAEA</string>
+                    <key>textColor</key>
+                    <string>FFFFFF</string>
+                    <key>textSize</key>
+                    <integer>20</integer>
+                    <key>textFont</key>
+                    <string>nil</string>
+                    <key>textFontStyle</key>
+                    <string>bold</string>
+                </dict>
+                <key>BackButton</key>
+                <dict>
+                    <key>show</key>
+                    <true/>
+                    <key>textColor</key>
+                    <string>FFFFFF</string>
+                    <key>image</key>
+                    <string>arrow</string>
+                </dict>
+                <key>PreviewView</key>
+                <dict>
+                    <key>backgroundColor</key>
+                    <string>000000</string>
+                </dict>
+                <key>MultimediaNotification</key>
+                <dict>
+                    <key>show</key>
+                    <true/>
+                    <key>titleColor</key>
+                    <string>B9C500</string>
+                    <key>titleFont</key>
+                    <string>nil</string>
+                    <key>titleTextSize</key>
+                    <integer>20</integer>
+                    <key>messageColor</key>
+                    <string>000000</string>
+                    <key>messageFont</key>
+                    <string>nil</string>
+                    <key>messageTextSize</key>
+                    <integer>20</integer>
+                    <key>inputColor</key>
+                    <string>000000</string>
+                    <key>inputFont</key>
+                    <string>nil</string>
+                    <key>inputTextSize</key>
+                    <integer>20</integer>
+                    <key>buttonTextColor</key>
+                    <string>B9C500</string>
+                    <key>buttonTextFont</key>
+                    <string>nil</string>
+                    <key>buttonTitleSize</key>
+                    <integer>20</integer>
+                    <key>buttonBorderColor</key>
+                    <string>B9C500</string>
+                    <key>buttonBorderWidth</key>
+                    <integer>3</integer>
+                    <key>backgroundColor</key>
+                    <string>B9C500</string>
+                </dict>
+            </dict>
+        </config-file>
+        <!--<framework src="VideoID" type="podspec" spec="7.0.11" embed="true" />
+        <framework src="Alamofire" type="podspec" spec="5.1.0" embed="true" />-->
+
+        <!--<podspec>
+            <config>
+                <source url="https://github.com/CocoaPods/Specs.git"/>
+            </config>
+            <pods use-frameworks="true">
+                <pod name="VideoID" spec="7.0.11"/>
+            </pods>
+        </podspec>-->
+
+        <pods-config ios-min-version="10.0" use-frameworks="true"/>
+        <pod id="VideoID" version="7.0.11"/>
+
+    </platform>
+
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="CordovaElectronicId">
+                <param name="android-package" value="pluginCordovaElectronicId.CordovaElectronicId" />
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <activity android:theme="@style/Theme.AppCompat.Light" android:label="ElectronicIdLauncherActivity" android:name="pluginCordovaElectronicId.ElectronicIdLauncherActivity"></activity>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+
+        <!-- Native Files -->
+        <source-file src="src/android/CordovaElectronicId.java" target-dir="src/pluginCordovaElectronicId" />
+        <source-file src="src/android/electronicid/ElectronicIdLauncherActivity.java" target-dir="src/pluginCordovaElectronicId" />
+        <source-file src="src/android/electronicid/model/ElectronicIdAuthorizationRequest.java" target-dir="src/pluginCordovaElectronicId/model" />
+        <source-file src="src/android/electronicid/model/ElectronicIdAuthorizationResponse.java" target-dir="src/pluginCordovaElectronicId/model" />
+        <source-file src="src/android/electronicid/model/ElectronicIdVideoDataRequest.java" target-dir="src/pluginCordovaElectronicId/model" />
+        <source-file src="src/android/electronicid/model/ElectronicIdVideoDataResponse.java" target-dir="src/pluginCordovaElectronicId/model" />
+        
+        <!-- Entities -->
+        <source-file src="src/android/electronicid/model/entities/Badge1.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/Biometrics.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/Bbox.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/Chip.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/Completion.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/DataIntegrity.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/Document.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/EuroBadge.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/Face.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/Features.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/Flag.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/Hologram.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/Initials.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/InitialsMatch.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/Liveness.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/NonExpired.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/NotBWCopy.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/NotUnderage.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/Photo.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/Request.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/SecurityChecks.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/SidesMatch.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/Signature.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        <source-file src="src/android/electronicid/model/entities/Subject.java" target-dir="src/pluginCordovaElectronicId/model/entities" />
+        
+        <source-file src="src/android/util/Api.java" target-dir="src/pluginCordovaElectronicId" />
+
+        <!-- Styles -->
+        <source-file src="src/android/styles/styles-electronicid.xml" target-dir="src/main/res/values/"/>
+
+        <framework src="src/android/cordovaElectronicId.gradle" custom="true" type="gradleReference" />
+    </platform>
+</plugin>

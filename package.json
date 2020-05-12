@@ -1,0 +1,19 @@
+{
+  "name": "cordova-plugin-electronicid",
+  "version": "0.1.0",
+  "description": "electronicId SDK for ionic",
+  "cordova": {
+    "id": "cordovaPluginElectronicId",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "author": "Everis",
+  "license": "ISC"
+}
