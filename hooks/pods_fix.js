@@ -25,7 +25,9 @@ module.exports = function(context) {
           //data = 'ENV[\'SWIFT_VERSION\'] = \'5\'' + data;
 
           if (data.includes('pod \'FLEX\', :git => \'https://github.com/OutSystems/FLEX/\', :tag => \'3.0.0-OS3\', :configurations => [\'Debug\']')){
-            data = data.split('\n').slice(8).join('\n');
+            var lines = data.split('\n');
+            delete lines[6];
+            data = lines.join('\n');
           }
 
           if (!data.includes("use_frameworks!")){
