@@ -13,6 +13,8 @@
                 <param name="ios-package" value="CordovaElectronicId"/>
                 <param name="onload" value="true" />
             </feature>
+            <preference name="deployment-target" value="10" />
+            <preference name="SwiftVersion" value="5" />
         </config-file>
         <source-file src="src/ios/ElectronicIDWrapper.swift" />
         <source-file src="src/ios/ElectronicId.swift" />
