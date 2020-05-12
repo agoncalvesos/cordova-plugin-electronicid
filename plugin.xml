@@ -8,9 +8,8 @@
     <!--<dependency id="cordova-plugin-cocoapod-support" version="1.6.2"/>-->
 
     <platform name="ios">
+        <hook type="before_plugin_install" src="hooks/pods_fix.js" />
 
-        <hook type="after_plugin_install" src="hooks/pods_fix.js" />
-        
         <config-file parent="/*" target="config.xml">
             <feature name="CordovaElectronicId">
                 <param name="ios-package" value="CordovaElectronicId"/>
