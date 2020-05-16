@@ -8,7 +8,10 @@
     <dependency id="cordova-plugin-cocoapod-support" url="https://github.com/agoncalvesos/cordova-plugin-cocoapods-support.git"/>
 
     <platform name="ios">
-        <hook type="before_plugin_install" src="hooks/pods_fix.js" />
+
+        <dependency url="https://github.com/agoncalvesos/cordova-plugin-add-swift-support" commit="513e43f94ae94ad609d49f24e7dca23a4c358095" id="cordova-plugin-add-swift-support"/>
+
+        <!--<hook type="before_plugin_install" src="hooks/pods_fix.js" />-->
 
         <config-file parent="/*" target="config.xml">
             <feature name="CordovaElectronicId">
@@ -163,8 +166,7 @@
                 </dict>
             </dict>
         </config-file>
-        <dependency id="cordova-plugin-add-swift-support@1.7.2"/>
-        <dependency url="https://github.com/agoncalvesos/cordova-plugin-add-swift-support" id="cordova-plugin-add-swift-support"/>
+        <!--<dependency id="cordova-plugin-add-swift-support@1.7.2"/>-->
         <!--<framework src="VideoID" type="podspec" spec="7.1.0" embed="true" />-->
         <!--<framework src="Alamofire" type="podspec" spec="5.1.0" embed="true" />-->
 
