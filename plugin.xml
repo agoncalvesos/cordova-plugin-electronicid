@@ -192,7 +192,7 @@
         <!--<pod name="FLEX" git="https://github.com/OutSystems/FLEX/" tag="3.0.0-OS3" spec=":configurations => ['Debug']"  />
         <pod name="CocoaLumberjack" spec="2.4.0"/>
         <pod name="PureeOS" spec="2.0.1.OS5"/>-->
-        <pod name="VideoID"  spec="7.1.0"/>
+        <pod name="VideoID"  spec="7.0.11"/>
 
     </platform>
 
