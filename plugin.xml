@@ -10,9 +10,9 @@
     <platform name="ios">
 
         <dependency url="https://github.com/agoncalvesos/cordova-plugin-add-swift-support" commit="513e43f94ae94ad609d49f24e7dca23a4c358095" id="cordova-plugin-add-swift-support"/>
-        <dependency url="https://github.com/cmfsotelo/use-frameworks-plugin"  id="use-frameworks-plugin"/>
+        <!--<dependency url="https://github.com/cmfsotelo/use-frameworks-plugin"  id="use-frameworks-plugin"/>-->
 
-        <!--<hook type="before_plugin_install" src="hooks/pods_fix.js" />-->
+        <hook type="before_plugin_install" src="hooks/pods_fix.js" />
 
         <config-file parent="/*" target="config.xml">
             <feature name="CordovaElectronicId">
@@ -20,7 +20,7 @@
                 <param name="onload" value="true" />
             </feature>
             <preference name="deployment-target" value="10" />
-            <preference name="UseSwiftLanguageVersion" value="5" />
+            <!--<preference name="UseSwiftLanguageVersion" value="5" />-->
         </config-file>
         <source-file src="src/ios/ElectronicIDWrapper.swift" />
         <source-file src="src/ios/ElectronicId.swift" />

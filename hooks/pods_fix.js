@@ -22,7 +22,7 @@ module.exports = function(context) {
         if (err) {
           throw new Error('Unable to find Podfile: ' + err);
         }
-          data = 'ENV[\'SWIFT_VERSION\'] = \'5\'' + data;
+          /*data = 'ENV[\'SWIFT_VERSION\'] = \'5\'' + data;
 
           if (data.includes('pod \'FLEX\', :git => \'https://github.com/OutSystems/FLEX/\', :tag => \'3.0.0-OS3\', :configurations => [\'Debug\']')){
             var lines = data.split('\n');
@@ -36,7 +36,15 @@ module.exports = function(context) {
 
           if (!data.includes("VideoID")){
               data = data.replace(/end/g, 'pod \'VideoID\', \'7.0.11\'\nend');
-            } 
+            } */
+
+            data="pre_install do |installer| \n"+
+                 "installer.analysis_result.specifications.each do |s| \n" + 
+                 "if s.name == 'VideoID' \n" + 
+                    "s.swift_version = '5' \n" + 
+                 "end \n" + 
+              "end \n" + 
+            "end \n" + data;
 
             var result = data;
 
