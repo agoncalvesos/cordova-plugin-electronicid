@@ -19,7 +19,7 @@
                 <param name="onload" value="true" />
             </feature>
             <preference name="deployment-target" value="10" />
-            <preference name="SwiftVersion" value="5" />
+            <preference name="UseSwiftLanguageVersion" value="5" />
         </config-file>
         <source-file src="src/ios/ElectronicIDWrapper.swift" />
         <source-file src="src/ios/ElectronicId.swift" />
@@ -181,12 +181,16 @@
         <!--<pods-config ios-min-version="10.0" use-frameworks="true"/>
         <pod id="VideoID" version="7.0.11"/>-->
 
-         <pods-config ios-min-version="11.0" use-frameworks="true">
+         <!--<pods-config ios-min-version="11.0" use-frameworks="true" use-modular-headers="true">-->
+         <pods-config ios-min-version="10.0" use-frameworks="true">
             <!-- optionally add private spec sources -->
             <!--<source url="https://github.com/CocoaPods/Specs.git"/>-->
         </pods-config>
 
-        <pod name="VideoID" spec="7.0.11"/>
+        <!--<pod name="FLEX" git="https://github.com/OutSystems/FLEX/" tag="3.0.0-OS3" spec=":configurations => ['Debug']"  />
+        <pod name="CocoaLumberjack" spec="2.4.0"/>
+        <pod name="PureeOS" spec="2.0.1.OS5"/>-->
+        <pod name="VideoID"  spec="7.0.11"/>
 
     </platform>
 
