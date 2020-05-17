@@ -181,12 +181,12 @@
         <!--<pods-config ios-min-version="10.0" use-frameworks="true"/>
         <pod id="VideoID" version="7.0.11"/>-->
 
-         <pods-config ios-min-version="11.0">
+         <pods-config ios-min-version="11.0" use-frameworks="true">
             <!-- optionally add private spec sources -->
             <!--<source url="https://github.com/CocoaPods/Specs.git"/>-->
         </pods-config>
 
-        <pod name="VideoID" />
+        <pod name="VideoID" spec="7.0.11"/>
 
     </platform>
 
