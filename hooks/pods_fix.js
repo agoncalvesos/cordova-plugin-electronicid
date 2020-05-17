@@ -40,9 +40,9 @@ module.exports = function(context) {
 
             data="pre_install do |installer| \n"+
                  "installer.analysis_result.specifications.each do |s| \n" + 
-                 "if s.name == 'AlamofireImage' \n" + 
+                 //"if s.name == 'AlamofireImage' \n" + 
                     "s.swift_version = '5' \n" + 
-                 "end \n" + 
+                 //"end \n" + 
               "end \n" + 
             "end \n" + data;
 
