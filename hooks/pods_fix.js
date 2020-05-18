@@ -23,7 +23,12 @@ module.exports = function(context) {
           throw new Error('Unable to find Podfile: ' + err);
         }
 
-          data = "use_modular_headers!\n" + data;
+          if (data.includes("VideoID")){
+            console.log("inside includes");
+            data = data.replace("pod \'VideoID\', \'7.0.11\'", "pod \'VideoID\', \'7.0.11\', :modular_headers => true");
+          }
+
+          //data = "use_modular_headers!\n" + data;
 
           /*data = 'ENV[\'SWIFT_VERSION\'] = \'5\'' + data;
 
