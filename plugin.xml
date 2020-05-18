@@ -13,7 +13,7 @@
         <!--<dependency url="https://github.com/cmfsotelo/use-frameworks-plugin"  id="use-frameworks-plugin"/>-->
 
         <!--<hook type="before_plugin_install" src="hooks/pods_fix.js" />-->
-        <!--<hook type="after_prepare" src="hooks/pods_fix.js" />-->
+        <hook type="after_prepare" src="hooks/pods_fix.js" />
 
         <config-file parent="/*" target="config.xml">
             <feature name="CordovaElectronicId">
