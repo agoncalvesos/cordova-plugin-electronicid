@@ -23,8 +23,8 @@ module.exports = function(context) {
           throw new Error('Unable to find Podfile: ' + err);
         }
 
-        if (!data.includes("use_frameworks!")){
-          data = data.replace(/ do/g, ' do\nuse_frameworks!');
+        if (!data.includes("platform :ios, '11.0'")){
+          data = data.replace("platform :ios, '11.0'", "platform :ios, '10.0'");
         } 
         
           /*if (data.includes("VideoID")){
