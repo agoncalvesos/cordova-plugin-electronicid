@@ -9,11 +9,11 @@
 
     <platform name="ios">
 
-        <dependency url="https://github.com/agoncalvesos/cordova-plugin-add-swift-support" commit="513e43f94ae94ad609d49f24e7dca23a4c358095" id="cordova-plugin-add-swift-support"/>
+        <dependency url="https://github.com/agoncalvesos/cordova-plugin-add-swift-support" id="cordova-plugin-add-swift-support"/>
         <!--<dependency url="https://github.com/cmfsotelo/use-frameworks-plugin"  id="use-frameworks-plugin"/>-->
 
         <!--<hook type="before_plugin_install" src="hooks/pods_fix.js" />-->
-        <hook type="before_prepare" src="hooks/pods_fix.js" />
+        <!--<hook type="before_prepare" src="hooks/pods_fix.js" />-->
 
         <config-file parent="/*" target="config.xml">
             <feature name="CordovaElectronicId">
