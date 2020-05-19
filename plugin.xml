@@ -192,10 +192,10 @@
         <!--<pod name="FLEX" git="https://github.com/OutSystems/FLEX/" tag="3.0.0-OS3" spec=":configurations => ['Debug']"  />
         <pod name="CocoaLumberjack" spec="2.4.0"/>
         <pod name="PureeOS" spec="2.0.1.OS5"/>-->
-        <!--<pod name="VideoID" spec="7.0.11" modular_headers="true"/>-->
         <!--<pod name="VideoID" spec="7.0.11" />-->
         <!--<pod name="VideoID" spec="7.1.0" />-->
-        <pod name="eIDWebRTC.bitcode" spec="60.0.19018" modular_headers="true" />
+        <!--<pod name="eIDWebRTC.bitcode" spec="60.0.19018" />-->
+        <pod name="WebRTC" />
 
         <framework src="src/ios/libs/Alamofire.framework" target-dir="lib" framework="true" />
         <framework src="src/ios/libs/Alamofire.framework" embed="true" custom="true" />
