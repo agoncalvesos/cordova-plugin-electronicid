@@ -1,0 +1,650 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
+// swift-module-flags: -target armv7-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name VideoID
+import AVFoundation
+import AVKit
+import Alamofire
+import AlamofireImage
+import Foundation
+import ObjectMapper
+import SocketRocket
+import Swift
+import UIKit
+@_exported import VideoID
+import WebRTC
+public enum Language : Swift.String {
+  case en
+  case es
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc public enum SimilarityLevel : Swift.Int, Swift.RawRepresentable {
+  case none, high, medium, low, verylow
+  public typealias RawValue = Swift.String
+  public var rawValue: VideoID.SimilarityLevel.RawValue {
+    get
+  }
+  public init?(rawValue: VideoID.SimilarityLevel.RawValue)
+}
+@objc open class CustomViewController : UIKit.UIViewController, VideoID.VideoListener {
+  weak public var delegate: VideoID.VideoDelegate?
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  public init(environment: VideoID.Environment, language: Swift.String?, videoService: VideoID.VideoService = .videoID)
+  @objc override dynamic open func viewDidLoad()
+  @objc override dynamic open func viewDidDisappear(_ animated: Swift.Bool)
+  public func finish()
+  @objc override dynamic open var shouldAutorotate: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic open var prefersStatusBarHidden: Swift.Bool {
+    @objc get
+  }
+  public func setCustomUIView(_ customUI: UIKit.UIView)
+  open func onStarting()
+  open func onStarted(roi: VideoID.Quad)
+  open func onAgentConnecting()
+  open func onAgentConnected()
+  open func onPhaseStarting(phase: VideoID.Phase, onCompletion: @escaping () -> Swift.Void)
+  open func onPhaseStarted(phase: VideoID.Phase?)
+  open func onPhaseFinished(phase: VideoID.Phase, onCompletion: @escaping () -> Swift.Void)
+  open func onDetection(phase: VideoID.Phase?, coordinates: VideoID.Quad?)
+  open func onNotification(code: Swift.String, message: Swift.String, level: VideoID.NotificationLevel, ttl: Swift.Int, audioUrl: Swift.String)
+  open func onCompleted(id: Swift.String)
+  open func onError(code: Swift.String, message: Swift.String?)
+  public func rotate(orientation: UIKit.UIInterfaceOrientation, completion: (() -> ())?)
+  public func showDetectionLoader(show: Swift.Bool)
+  public func onConfigurationLoaded(audioConfiguration: Swift.Bool)
+  public func onDisplayHighlights(highlights: [VideoID.Highlight]?)
+  public func onClearHighlights()
+  public func onMultimediaNotification(name: Swift.String?, title: Swift.String, message: Swift.String, actionTitle: Swift.String, videoUrl: Swift.String, imageUrl: Swift.String, audioUrl: Swift.String, ttl: Swift.Int, ack: Swift.Bool, action: VideoID.NotificationAction, type: VideoID.NotificationType, inputType: VideoID.InputType?, inputLenght: Swift.Int?, phase: VideoID.Phase?, finished: ((Swift.String?) -> ())?)
+  open func getCustomMultimediaNotification() -> VideoID.CustomMultimediaNotificationView?
+  open func getCustomFrontMultimediaNotification() -> VideoID.CustomMultimediaNotificationView?
+  open func getCustomBackMultimediaNotification() -> VideoID.CustomMultimediaNotificationView?
+  open func getCustomFaceMultimediaNotification() -> VideoID.CustomMultimediaNotificationView?
+  open func getCustomFeedbackMultimediaNotification() -> VideoID.CustomMultimediaNotificationView?
+  open func getCustomCaptchaMultimediaNotification() -> VideoID.CustomMultimediaNotificationView?
+  open func getCustomAudioCaptchaMultimediaNotification() -> VideoID.CustomMultimediaNotificationView?
+  open func getCustomHologramMultimediaNotification() -> VideoID.CustomMultimediaNotificationView?
+  @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @objc deinit
+}
+public struct Highlight {
+}
+public struct HighlightCoordinate {
+}
+public class Point : ObjectMapper.Mappable {
+  public var x: CoreGraphics.CGFloat
+  public var y: CoreGraphics.CGFloat
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class Ack : ObjectMapper.Mappable {
+  public init(videoId: Swift.String, notificationId: Swift.String, input: Swift.String)
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public enum StompAckMode {
+  case AutoMode
+  case ClientMode
+  case ClientIndividualMode
+  public static func == (a: VideoID.StompAckMode, b: VideoID.StompAckMode) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public protocol StompClientDelegate : AnyObject {
+  func stompClient(client: VideoID.StompClient!, didReceiveMessageWithJSONBody jsonBody: Swift.AnyObject?, akaStringBody stringBody: Swift.String?, withHeader header: [Swift.String : Swift.String]?, withDestination destination: Swift.String)
+  func stompClientDidDisconnect(client: VideoID.StompClient!)
+  func stompClientDidConnect(client: VideoID.StompClient!)
+  func serverDidSendReceipt(client: VideoID.StompClient!, withReceiptId receiptId: Swift.String)
+  func serverDidSendError(client: VideoID.StompClient!, withErrorMessage description: Swift.String, detailedErrorMessage message: Swift.String?)
+  func serverDidSendPing()
+}
+public protocol StompClient : AnyObject {
+  func openSocketWithURLRequest(request: Foundation.NSURLRequest, delegate: VideoID.StompClientDelegate, connectionHeaders: [Swift.String : Swift.String]?)
+  func sendJSONForDict(dict: Swift.AnyObject, toDestination destination: Swift.String)
+  func sendMessage(message: Swift.String, toDestination destination: Swift.String, withHeaders headers: [Swift.String : Swift.String]?, withReceipt receipt: Swift.String?)
+  func sendData(data: Foundation.Data, toDestination destination: Swift.String, withHeaders headers: [Swift.String : Swift.String]?, withReceipt receipt: Swift.String?)
+  func subscribe(destination: Swift.String)
+  func subscribeToDestination(destination: Swift.String, ackMode: VideoID.StompAckMode)
+  func subscribeWithHeader(destination: Swift.String, withHeader header: [Swift.String : Swift.String])
+  func unsubscribe(destination: Swift.String)
+  func begin(transactionId: Swift.String)
+  func commit(transactionId: Swift.String)
+  func abort(transactionId: Swift.String)
+  func ack(messageId: Swift.String)
+  func ack(messageId: Swift.String, withSubscription subscription: Swift.String)
+  func isConnected() -> Swift.Bool
+  func disconnect()
+  func reconnect(request: Foundation.NSURLRequest, delegate: VideoID.StompClientDelegate, connectionHeaders: [Swift.String : Swift.String], time: Swift.Double, exponentialBackoff: Swift.Bool)
+  func autoDisconnect(time: Swift.Double)
+  var connection: Swift.Bool { get set }
+  var certificateCheckEnabled: Swift.Bool { get set }
+}
+@objc public class StompClientImp : ObjectiveC.NSObject {
+  public var connection: Swift.Bool
+  public var certificateCheckEnabled: Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension StompClientImp : VideoID.StompClient {
+  public func openSocketWithURLRequest(request: Foundation.NSURLRequest, delegate: VideoID.StompClientDelegate, connectionHeaders: [Swift.String : Swift.String]? = nil)
+  public func sendJSONForDict(dict: Swift.AnyObject, toDestination destination: Swift.String)
+  public func sendMessage(message: Swift.String, toDestination destination: Swift.String, withHeaders headers: [Swift.String : Swift.String]?, withReceipt receipt: Swift.String?)
+  public func sendData(data: Foundation.Data, toDestination destination: Swift.String, withHeaders headers: [Swift.String : Swift.String]?, withReceipt receipt: Swift.String?)
+  public func subscribe(destination: Swift.String)
+  public func subscribeToDestination(destination: Swift.String, ackMode: VideoID.StompAckMode)
+  public func subscribeWithHeader(destination: Swift.String, withHeader header: [Swift.String : Swift.String])
+  public func unsubscribe(destination: Swift.String)
+  public func begin(transactionId: Swift.String)
+  public func commit(transactionId: Swift.String)
+  public func abort(transactionId: Swift.String)
+  public func ack(messageId: Swift.String)
+  public func ack(messageId: Swift.String, withSubscription subscription: Swift.String)
+  public func isConnected() -> Swift.Bool
+  public func disconnect()
+  public func reconnect(request: Foundation.NSURLRequest, delegate: VideoID.StompClientDelegate, connectionHeaders: [Swift.String : Swift.String] = [String: String](), time: Swift.Double = 1.0, exponentialBackoff: Swift.Bool = true)
+  public func autoDisconnect(time: Swift.Double)
+}
+extension StompClientImp : SocketRocket.SRWebSocketDelegate {
+  @objc dynamic public func webSocket(_ webSocket: SocketRocket.SRWebSocket!, didReceiveMessage message: Any!)
+  @objc dynamic public func webSocketDidOpen(_ webSocket: SocketRocket.SRWebSocket!)
+  @objc dynamic public func webSocket(_ webSocket: SocketRocket.SRWebSocket!, didFailWithError error: Swift.Error!)
+  @objc dynamic public func webSocket(_ webSocket: SocketRocket.SRWebSocket!, didCloseWithCode code: Swift.Int, reason: Swift.String!, wasClean: Swift.Bool)
+  @objc dynamic public func webSocket(_ webSocket: SocketRocket.SRWebSocket!, didReceivePong pongPayload: Foundation.Data!)
+}
+public protocol VideoListener : AnyObject {
+  func onStarting()
+  func onStarted(roi: VideoID.Quad)
+  func onAgentConnecting()
+  func onAgentConnected()
+  func onPhaseStarting(phase: VideoID.Phase, onCompletion: @escaping () -> Swift.Void)
+  func onPhaseStarted(phase: VideoID.Phase?)
+  func onPhaseFinished(phase: VideoID.Phase, onCompletion: @escaping () -> Swift.Void)
+  func onDetection(phase: VideoID.Phase?, coordinates: VideoID.Quad?)
+  func onNotification(code: Swift.String, message: Swift.String, level: VideoID.NotificationLevel, ttl: Swift.Int, audioUrl: Swift.String)
+  func onMultimediaNotification(name: Swift.String?, title: Swift.String, message: Swift.String, actionTitle: Swift.String, videoUrl: Swift.String, imageUrl: Swift.String, audioUrl: Swift.String, ttl: Swift.Int, ack: Swift.Bool, action: VideoID.NotificationAction, type: VideoID.NotificationType, inputType: VideoID.InputType?, inputLenght: Swift.Int?, phase: VideoID.Phase?, finished: ((Swift.String?) -> ())?)
+  func onCompleted(id: Swift.String)
+  func onError(code: Swift.String, message: Swift.String?)
+  func onConfigurationLoaded(audioConfiguration: Swift.Bool)
+  func onDisplayHighlights(highlights: [VideoID.Highlight]?)
+  func onClearHighlights()
+  func rotate(orientation: UIKit.UIInterfaceOrientation, completion: (() -> ())?)
+  func showDetectionLoader(show: Swift.Bool)
+}
+@objc public protocol VideoDelegate : AnyObject {
+  @objc func onComplete(videoID: Swift.String)
+  @objc func onError(code: Swift.String, message: Swift.String?)
+}
+public protocol VideoIDDelegate : VideoID.VideoDelegate {
+}
+@objc public class Quad : ObjectiveC.NSObject, ObjectMapper.Mappable {
+  public var p1: VideoID.Point?
+  public var p2: VideoID.Point?
+  public var p3: VideoID.Point?
+  public var p4: VideoID.Point?
+  public var width: CoreGraphics.CGFloat {
+    get
+  }
+  public var height: CoreGraphics.CGFloat {
+    get
+  }
+  public init(p1: VideoID.Point, p2: VideoID.Point, p3: VideoID.Point, p4: VideoID.Point)
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public enum Phase : Swift.Int {
+  case front, back, face
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum CustomMultimediaNotificationViewInputType {
+  case text
+  case number
+  case none
+  public static func == (a: VideoID.CustomMultimediaNotificationViewInputType, b: VideoID.CustomMultimediaNotificationViewInputType) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public enum CustomMultimediaNotificationViewType {
+  case feedback
+  case captcha
+  case audioCaptcha
+  case hologram
+  case view
+  public static func == (a: VideoID.CustomMultimediaNotificationViewType, b: VideoID.CustomMultimediaNotificationViewType) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+  public func hash(into hasher: inout Swift.Hasher)
+}
+public class CustonMultimediaNotificationHelper {
+  @objc deinit
+}
+public protocol CustomMultimediaNotificationViewProtocol : UIKit.UIView {
+  func setValues(title: Swift.String, message: Swift.String, actionTitle: Swift.String, videoUrl: Swift.String, imageUrl: Swift.String, audioUrl: Swift.String, ttl: Swift.Int, phase: VideoID.Phase?, inputType: VideoID.CustomMultimediaNotificationViewInputType, viewType: VideoID.CustomMultimediaNotificationViewType, finished: ((Swift.String?) -> ())?)
+  func setAck(data: Swift.String)
+}
+@objc open class CustomMultimediaNotificationView : UIKit.UIView, VideoID.CustomMultimediaNotificationViewProtocol {
+  public var title: Swift.String?
+  public var message: Swift.String?
+  public var videoUrl: Swift.String?, imageUrl: Swift.String?, audioUrl: Swift.String?
+  public var actionTitle: Swift.String?
+  public var ttl: Swift.Int?
+  public var action: VideoID.NotificationAction?
+  public var phase: VideoID.Phase?
+  public var inputType: VideoID.CustomMultimediaNotificationViewInputType?
+  public var viewType: VideoID.CustomMultimediaNotificationViewType?
+  public var finished: ((Swift.String?) -> ())?
+  @objc override dynamic open var isHidden: Swift.Bool {
+    @objc get
+    @objc set(v)
+  }
+  open func setValues(title: Swift.String, message: Swift.String, actionTitle: Swift.String, videoUrl: Swift.String, imageUrl: Swift.String, audioUrl: Swift.String, ttl: Swift.Int, phase: VideoID.Phase?, inputType: VideoID.CustomMultimediaNotificationViewInputType, viewType: VideoID.CustomMultimediaNotificationViewType, finished: ((Swift.String?) -> ())?)
+  @objc override dynamic open func removeFromSuperview()
+  open func setAck(data: Swift.String)
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public class Notification : ObjectMapper.Mappable {
+  public func acknowledge(data: Swift.String? = nil)
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  public class Input : ObjectMapper.Mappable {
+    required public init?(map: ObjectMapper.Map)
+    public func mapping(map: ObjectMapper.Map)
+    @objc deinit
+  }
+  public class Message : ObjectMapper.Mappable {
+    required public init?(map: ObjectMapper.Map)
+    public func mapping(map: ObjectMapper.Map)
+    @objc deinit
+  }
+  @objc deinit
+}
+public enum InputType : Swift.String {
+  case string
+  case number
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum NotificationType : Swift.String {
+  case text
+  case video
+  case image
+  case unknown
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum NotificationAction : Swift.String {
+  case info
+  case warning
+  case error
+  case feedback
+  case input
+  case unknown
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum NotificationName : Swift.String {
+  case wellDone
+  case hologram
+  case audioCaptcha
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+  public init?(rawValue: Swift.String)
+}
+@objc public enum NotificationLevel : Swift.Int {
+  case info, warning
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public class VideoIDEnvironment : ObjectMapper.Mappable {
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+public class VideoIDErrorNode : ObjectMapper.Mappable {
+  required public init?(map: ObjectMapper.Map)
+  public func mapping(map: ObjectMapper.Map)
+  @objc deinit
+}
+@objc open class VideoIDViewController : VideoID.CustomViewController {
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  public init(environment: VideoID.Environment, language: Swift.String?, docType: Swift.Int)
+  open func onVideoIDStarting()
+  open func onVideoIDStarted(roi: VideoID.Quad)
+  open func onVideoIDAgentConnecting()
+  open func onVideoIDAgentConnected()
+  open func onVideoIDPhaseStarting(phase: VideoID.Phase, onCompletion: @escaping () -> Swift.Void)
+  open func onVideoIDPhaseStarted(phase: VideoID.Phase?)
+  open func onVideoIDPhaseFinished(phase: VideoID.Phase, onCompletion: @escaping () -> Swift.Void)
+  open func onVideoIDDetection(phase: VideoID.Phase?, coordinates: VideoID.Quad?)
+  open func onVideoIDNotification(code: Swift.String, message: Swift.String, level: VideoID.NotificationLevel, ttl: Swift.Int, audioUrl: Swift.String)
+  open func onVideoIDCompleted(videoID: Swift.String)
+  open func onVideoIDError(code: Swift.String, message: Swift.String?)
+  override open func onStarting()
+  override open func onStarted(roi: VideoID.Quad)
+  override open func onAgentConnecting()
+  override open func onAgentConnected()
+  override open func onPhaseStarting(phase: VideoID.Phase, onCompletion: @escaping () -> Swift.Void)
+  override open func onPhaseStarted(phase: VideoID.Phase?)
+  override open func onPhaseFinished(phase: VideoID.Phase, onCompletion: @escaping () -> Swift.Void)
+  override open func onDetection(phase: VideoID.Phase?, coordinates: VideoID.Quad?)
+  override open func onNotification(code: Swift.String, message: Swift.String, level: VideoID.NotificationLevel, ttl: Swift.Int, audioUrl: Swift.String)
+  override open func onCompleted(id: Swift.String)
+  override open func onError(code: Swift.String, message: Swift.String?)
+  override public init(environment: VideoID.Environment, language: Swift.String?, videoService: VideoID.VideoService = super)
+  @objc deinit
+}
+public enum Colors : Swift.String {
+  case overlayBlack
+  case civitanaGreenBackground
+  case civitanaGreenBorder
+  case civitanaGray
+  case civitana
+  case notificationGreen
+  case notificationRed
+  case notificationBackground
+  case roiBackgroundColor
+  case roiLineColor
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension UIColor {
+  open class func colorOverlayBlack() -> UIKit.UIColor
+  open class func colorCivitanaGreenBackground() -> UIKit.UIColor
+  open class func colorCivitanaGreenBorder() -> UIKit.UIColor
+  open class func colorCivitanaGray() -> UIKit.UIColor
+  open class func colorCivitana() -> UIKit.UIColor
+  open class func colorNotificationGreen() -> UIKit.UIColor
+  open class func colorNotificationRed() -> UIKit.UIColor
+  open class func colorNotificationBackground() -> UIKit.UIColor
+  open class func colorRoiBackground() -> UIKit.UIColor
+  public static func hexStringToUIColor(hex: Swift.String) -> UIKit.UIColor
+}
+extension UIImageView {
+  public func load(withURL url: Foundation.URL, placeholderImage: UIKit.UIImage? = nil, filter: AlamofireImage.ImageFilter? = nil, progress: AlamofireImage.ImageDownloader.ProgressHandler? = nil, progressQueue: Dispatch.DispatchQueue = DispatchQueue.main, imageTransition: UIKit.UIImageView.ImageTransition = .noTransition, runImageTransitionIfCached: Swift.Bool = false, completion: ((AlamofireImage.AFIDataResponse<UIKit.UIImage>) -> Swift.Void)? = nil)
+}
+@objc public enum Process : Swift.Int, Swift.RawRepresentable {
+  case attended, unattended
+  public typealias RawValue = Swift.String
+  public var rawValue: VideoID.Process.RawValue {
+    get
+  }
+  public init?(rawValue: VideoID.Process.RawValue)
+}
+extension NSLayoutConstraint {
+  @discardableResult
+  public func setActive() -> UIKit.NSLayoutConstraint
+}
+public enum DocumentType : Swift.String, Swift.Decodable {
+  case idCard
+  case passport
+  case driverLicense
+  case visa
+  case face
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum VideoService : Swift.String {
+  case videoID
+  case videoScan
+  case smileID
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc public class EidSpinner : UIKit.UIView {
+  public class var sharedInstance: VideoID.EidSpinner {
+    get
+  }
+  @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @objc override dynamic public func hitTest(_ point: CoreGraphics.CGPoint, with event: UIKit.UIEvent?) -> UIKit.UIView?
+  public var titleLabel: UIKit.UILabel {
+    get
+    set
+  }
+  public var subtitleLabel: UIKit.UILabel?
+  public var outerColor: UIKit.UIColor? {
+    get
+    set(newColor)
+  }
+  public var innerColor: UIKit.UIColor? {
+    get
+    set(newColor)
+  }
+  public var newColor: UIKit.UIColor? {
+    get
+    set(newColor)
+  }
+  public class func useContainerView(_ sv: UIKit.UIView?)
+  @discardableResult
+  public class func show(_ title: Swift.String, animated: Swift.Bool = true) -> VideoID.EidSpinner
+  @discardableResult
+  public class func show(duration: Swift.Double, title: Swift.String, animated: Swift.Bool = true) -> VideoID.EidSpinner
+  public class func show(delay: Swift.Double, title: Swift.String, animated: Swift.Bool = true)
+  @discardableResult
+  public class func show(progress: Swift.Double, title: Swift.String) -> VideoID.EidSpinner
+  public static var hideCancelsScheduledSpinners: Swift.Bool
+  public class func hide(_ completion: (() -> Swift.Void)? = nil)
+  public class func setTitleFont(_ font: UIKit.UIFont?)
+  public class func setTitleColor(_ color: UIKit.UIColor?)
+  public var title: Swift.String {
+    get
+    set
+  }
+  @objc override dynamic public var frame: CoreGraphics.CGRect {
+    @objc get
+    @objc set
+  }
+  public var animating: Swift.Bool {
+    get
+    set
+  }
+  public func addTapHandler(_ tap: @escaping (() -> ()), subtitle subtitleText: Swift.String? = nil)
+  @objc override dynamic public func touchesBegan(_ touches: Swift.Set<UIKit.UITouch>, with event: UIKit.UIEvent?)
+  public func clearTapHandler()
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc public func updateFrame()
+  @objc override dynamic public func layoutSubviews()
+  public func starting()
+  public func loading()
+  public func stop()
+  public func set(color: UIKit.UIColor)
+  @objc deinit
+}
+extension UIView {
+  public func removeAllConstraints()
+}
+@objc open class Environment : ObjectiveC.NSObject {
+  final public let restURL: Swift.String
+  final public let wsURL: Swift.String
+  final public let autorization: Swift.String
+  public init(url: Swift.String, autorization: Swift.String)
+  @objc override dynamic public init()
+  @objc deinit
+}
+public enum FontStyle : Swift.Int {
+  case Normal
+  case Bold
+  case Italic
+  case BoldAndItalic
+  public typealias RawValue = Swift.Int
+  public init?(rawValue: Swift.Int)
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct Style {
+  public enum FontStyle : Swift.Int {
+    case Normal
+    case Bold
+    case Italic
+    case BoldAndItalic
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public struct Preview {
+    public static var backgroundColor: UIKit.UIColor
+  }
+  public struct Navigation {
+    public static var show: Swift.Bool
+    public static var textColor: UIKit.UIColor
+    public static var image: UIKit.UIImage?
+  }
+  public struct Tick {
+    public static var show: Swift.Bool
+    public static var linesColor: UIKit.UIColor
+    public static var linesWidth: CoreGraphics.CGFloat
+    public static var durationTime: Swift.Double
+  }
+  public struct Notification {
+    public static var show: Swift.Bool
+    public static var textColor: UIKit.UIColor
+    public static var backgroundColor: UIKit.UIColor
+    public static var backgroundColorWarningColor: UIKit.UIColor
+    public static var textSize: CoreGraphics.CGFloat
+    public static var fullScreen: Swift.Bool
+    public static var textFont: UIKit.UIFont?
+    public static var textFontStyle: VideoID.Style.FontStyle?
+  }
+  public struct MultimediaNotification {
+    public static var show: Swift.Bool
+    public static var titleColor: UIKit.UIColor
+    public static var titleFont: UIKit.UIFont?
+    public static var titleTextSize: CoreGraphics.CGFloat
+    public static var messageColor: UIKit.UIColor
+    public static var messageFont: UIKit.UIFont?
+    public static var messageTextSize: CoreGraphics.CGFloat
+    public static var inputColor: UIKit.UIColor
+    public static var inputFont: UIKit.UIFont?
+    public static var inputTextSize: CoreGraphics.CGFloat
+    public static var buttonTextColor: UIKit.UIColor
+    public static var buttonTextFont: UIKit.UIFont?
+    public static var buttonTitleSize: CoreGraphics.CGFloat
+    public static var buttonBorderColor: UIKit.UIColor
+    public static var buttonBorderWidth: CoreGraphics.CGFloat
+    public static var backgroundColor: UIKit.UIColor
+  }
+  public struct Detection {
+    public static var showDocumentDetection: Swift.Bool
+    public static var showFaceDetection: Swift.Bool
+    public static var documentLinesColor: UIKit.UIColor
+    public static var documentLinesWidth: CoreGraphics.CGFloat
+    public static var documentBackgroundColor: UIKit.UIColor
+    public static var faceLineWidth: CoreGraphics.CGFloat
+    public static var faceLinesColor: UIKit.UIColor
+  }
+  public struct Roi {
+    public static var show: Swift.Bool
+    public static var backgroundColor: UIKit.UIColor
+    public static var linesColor: UIKit.UIColor
+    public static var linesColorSuccess: UIKit.UIColor
+    public static var linesWidth: CoreGraphics.CGFloat
+  }
+  public struct Waiting {
+    public static var show: Swift.Bool
+    public static var backgroundColor: UIKit.UIColor
+    public static var textColor: UIKit.UIColor
+    public static var textSize: CoreGraphics.CGFloat
+    public static var textFont: UIKit.UIFont?
+    public static var textFontStyle: VideoID.Style.FontStyle?
+    public static var color: UIKit.UIColor
+  }
+  public struct Audio {
+    public static var onImage: UIKit.UIImage?
+    public static var backgroundColor: UIKit.UIColor
+    public static var offImage: UIKit.UIImage?
+  }
+  public struct Logo {
+    public static var logo: UIKit.UIImage?
+  }
+  public struct Highlight {
+    public static var labelBackgroundColor: UIKit.UIColor
+    public static var labelTextColor: UIKit.UIColor
+    public static var linesColor: UIKit.UIColor
+    public static var linesWidth: CoreGraphics.CGFloat
+    public static var labelFont: UIKit.UIFont
+  }
+}
+extension Request {
+  public func debugLog() -> Self
+}
+extension VideoID.Language : Swift.Equatable {}
+extension VideoID.Language : Swift.Hashable {}
+extension VideoID.Language : Swift.RawRepresentable {}
+extension VideoID.SimilarityLevel : Swift.Equatable {}
+extension VideoID.SimilarityLevel : Swift.Hashable {}
+extension VideoID.StompAckMode : Swift.Equatable {}
+extension VideoID.StompAckMode : Swift.Hashable {}
+extension VideoID.Phase : Swift.Hashable {}
+extension VideoID.Phase : Swift.RawRepresentable {}
+extension VideoID.CustomMultimediaNotificationViewInputType : Swift.Equatable {}
+extension VideoID.CustomMultimediaNotificationViewInputType : Swift.Hashable {}
+extension VideoID.CustomMultimediaNotificationViewType : Swift.Equatable {}
+extension VideoID.CustomMultimediaNotificationViewType : Swift.Hashable {}
+extension VideoID.InputType : Swift.Hashable {}
+extension VideoID.InputType : Swift.RawRepresentable {}
+extension VideoID.NotificationType : Swift.Hashable {}
+extension VideoID.NotificationType : Swift.RawRepresentable {}
+extension VideoID.NotificationAction : Swift.Hashable {}
+extension VideoID.NotificationAction : Swift.RawRepresentable {}
+extension VideoID.NotificationName : Swift.Equatable {}
+extension VideoID.NotificationName : Swift.Hashable {}
+extension VideoID.NotificationName : Swift.RawRepresentable {}
+extension VideoID.NotificationLevel : Swift.Hashable {}
+extension VideoID.NotificationLevel : Swift.RawRepresentable {}
+extension VideoID.Colors : Swift.Equatable {}
+extension VideoID.Colors : Swift.Hashable {}
+extension VideoID.Colors : Swift.RawRepresentable {}
+extension VideoID.Process : Swift.Hashable {}
+extension VideoID.DocumentType : Swift.Hashable {}
+extension VideoID.DocumentType : Swift.RawRepresentable {}
+extension VideoID.VideoService : Swift.Hashable {}
+extension VideoID.VideoService : Swift.RawRepresentable {}
+extension VideoID.FontStyle : Swift.Equatable {}
+extension VideoID.FontStyle : Swift.Hashable {}
+extension VideoID.FontStyle : Swift.RawRepresentable {}
+extension VideoID.Style.FontStyle : Swift.Equatable {}
+extension VideoID.Style.FontStyle : Swift.Hashable {}
+extension VideoID.Style.FontStyle : Swift.RawRepresentable {}

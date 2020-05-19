@@ -184,17 +184,31 @@
         <pod id="VideoID" version="7.0.11"/>-->
 
          <!--<pods-config ios-min-version="11.0" use-frameworks="true" use-modular-headers="true">-->
-        <pods-config ios-min-version="11.0" use-frameworks="true">
+        <!--<pods-config ios-min-version="11.0" use-frameworks="true">-->
             <!-- optionally add private spec sources -->
             <!--<source url="https://github.com/CocoaPods/Specs.git"/>-->
-        </pods-config>
+        <!--</pods-config>-->
 
         <!--<pod name="FLEX" git="https://github.com/OutSystems/FLEX/" tag="3.0.0-OS3" spec=":configurations => ['Debug']"  />
         <pod name="CocoaLumberjack" spec="2.4.0"/>
         <pod name="PureeOS" spec="2.0.1.OS5"/>-->
         <!--<pod name="VideoID" spec="7.0.11" modular_headers="true"/>-->
         <!--<pod name="VideoID" spec="7.0.11" />-->
-        <pod name="VideoID" spec="7.1.0" />
+        <!--<pod name="VideoID" spec="7.1.0" />-->
+        <pod name="eIDWebRTC.bitcode" spec="60.0.19018" />
+        
+        <framework src="src/ios/libs/Alamofire.framework" target-dir="lib" framework="true" />
+        <framework src="src/ios/libs/Alamofire.framework" embed="true" custom="true" />
+        <framework src="src/ios/libs/AlamofireImage.framework" target-dir="lib" framework="true" />
+        <framework src="src/ios/libs/AlamofireImage.framework" embed="true" custom="true" />
+        <framework src="src/ios/libs/ObjectMapper.framework" target-dir="lib" framework="true" />
+        <framework src="src/ios/libs/ObjectMapper.framework" embed="true" custom="true" />
+        <framework src="src/ios/libs/SocketRocket.framework" target-dir="lib" framework="true" />
+        <framework src="src/ios/libs/SocketRocket.framework" embed="true" custom="true" />
+        <framework src="src/ios/libs/VideoID.framework" target-dir="lib" framework="true" />
+        <framework src="src/ios/libs/VideoID.framework" embed="true" custom="true" />
+        <!--<framework src="src/ios/libs/WebRTC.framework" target-dir="lib" framework="true" />
+        <framework src="src/ios/libs/WebRTC.framework" embed="true" custom="true" />-->
 
     </platform>
 
