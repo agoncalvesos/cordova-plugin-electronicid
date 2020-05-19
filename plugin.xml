@@ -195,7 +195,7 @@
         <!--<pod name="VideoID" spec="7.0.11" modular_headers="true"/>-->
         <!--<pod name="VideoID" spec="7.0.11" />-->
         <!--<pod name="VideoID" spec="7.1.0" />-->
-        <!--<pod name="eIDWebRTC.bitcode" spec="60.0.19018" />-->
+        <pod name="eIDWebRTC.bitcode" spec="60.0.19018" />
 
         <framework src="src/ios/libs/Alamofire.framework" target-dir="lib" framework="true" />
         <framework src="src/ios/libs/Alamofire.framework" embed="true" custom="true" />
@@ -207,8 +207,8 @@
         <framework src="src/ios/libs/SocketRocket.framework" embed="true" custom="true" />
         <framework src="src/ios/libs/VideoID.framework" target-dir="lib" framework="true" />
         <framework src="src/ios/libs/VideoID.framework" embed="true" custom="true" />
-        <framework src="src/ios/libs/WebRTC.framework" target-dir="lib" framework="true" />
-        <framework src="src/ios/libs/WebRTC.framework" embed="true" custom="true" />
+        <!--<framework src="src/ios/libs/WebRTC.framework" target-dir="lib" framework="true" />
+        <framework src="src/ios/libs/WebRTC.framework" embed="true" custom="true" />-->
 
     </platform>
 
