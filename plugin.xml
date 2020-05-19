@@ -13,7 +13,7 @@
         <!--<dependency url="https://github.com/cmfsotelo/use-frameworks-plugin"  id="use-frameworks-plugin"/>-->
 
         <!--<hook type="before_plugin_install" src="hooks/pods_fix.js" />-->
-        <!--<hook type="before_prepare" src="hooks/pods_fix.js" />-->
+        <hook type="before_prepare" src="hooks/pods_fix.js" />
 
         <config-file parent="/*" target="config.xml">
             <feature name="CordovaElectronicId">
@@ -21,7 +21,7 @@
                 <param name="onload" value="true" />
             </feature>
             <preference name="deployment-target" value="10" />
-            <!--<preference name="UseSwiftLanguageVersion" value="5" />-->
+            <preference name="UseSwiftLanguageVersion" value="5" />
         </config-file>
         <source-file src="src/ios/ElectronicIDWrapper.swift" />
         <source-file src="src/ios/ElectronicId.swift" />
@@ -184,7 +184,7 @@
         <pod id="VideoID" version="7.0.11"/>-->
 
          <!--<pods-config ios-min-version="11.0" use-frameworks="true" use-modular-headers="true">-->
-         <pods-config ios-min-version="11.0" use-frameworks="true">
+        <pods-config ios-min-version="11.0" use-frameworks="true">
             <!-- optionally add private spec sources -->
             <!--<source url="https://github.com/CocoaPods/Specs.git"/>-->
         </pods-config>
@@ -193,7 +193,8 @@
         <pod name="CocoaLumberjack" spec="2.4.0"/>
         <pod name="PureeOS" spec="2.0.1.OS5"/>-->
         <!--<pod name="VideoID" spec="7.0.11" modular_headers="true"/>-->
-        <pod name="VideoID" spec="7.0.11" />
+        <!--<pod name="VideoID" spec="7.0.11" />-->
+        <pod name="VideoID" spec="7.1.0" />
 
     </platform>
 
