@@ -80,10 +80,13 @@ class ElectronicIDWrapper: NSObject {
         ]
         AF.request(cleanPath, method: .post, parameters: request.toJSON(),
                    encoding: JSONEncoding.default, headers: headers).validate().responseJSON { (response: AFDataResponse<Any>) in
-                    let value = response.value as! AuthorizationResponse
+                    let value = response.value;
                     switch response.result {
                     case .success:
-                        onResult(value.authorization)
+                        if let dict : Dictionary = value as? Dictionary<String,String> {
+                            onResult(dict.description)
+                            print("Sucesso")
+                        }
                     case .failure(let error):
                         onError(error)
                     }
