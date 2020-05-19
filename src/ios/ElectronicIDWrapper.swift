@@ -74,7 +74,7 @@ class ElectronicIDWrapper: NSObject {
         let path = endpoint + serviceURL
         let cleanPath = path.replacingOccurrences(of: "//", with: "/")
 
-        /*AF.request(cleanPath, method: .post, parameters: request.toJSON(),
+        AF.request(cleanPath, method: .post, parameters: request.toJSON(),
                    encoding: JSONEncoding.default, headers: headers).validate().responseJSON { (response: AFDataResponse<Any>) in
                     let value = response.value as! AuthorizationResponse
                     switch response.result {
@@ -83,7 +83,7 @@ class ElectronicIDWrapper: NSObject {
                     case .failure(let error):
                         onError(error)
                     }
-        }*/
+        }
 
         /*Alamofire.request(cleanPath, method: .post, parameters: request.toJSON(), encoding: JSONEncoding.default, headers: headers).validate().responseObject { (response: DataResponse<AuthorizationResponse>) in
 
