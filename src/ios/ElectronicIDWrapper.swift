@@ -67,13 +67,17 @@ class ElectronicIDWrapper: NSObject {
 
     private func createAuthorization(mode: ElectronicIDMode, service: VideoID.VideoService, onResult: @escaping (String?) -> Void, onError: @escaping (Error?) -> Void) {
 
-        let headers = ["Authorization": "Bearer " + self.bearer, "Accept": "application/json"]
+        //let headers = ["Authorization": "Bearer " + self.bearer, "Accept": "application/json"]
         let serviceURL = getServiceUrl(for: mode, service: service)
         let process = getProcess(for: mode)
         let request = AuthorizationRequest(tenantId: "", process: process, rauthorityId: self.rAuthority)
         let path = endpoint + serviceURL
         let cleanPath = path.replacingOccurrences(of: "//", with: "/")
 
+        let headers : HTTPHeaders = [
+            "Authorization": "Bearer " + self.bearer,
+            "Content-type" : "application/json"
+        ]
         AF.request(cleanPath, method: .post, parameters: request.toJSON(),
                    encoding: JSONEncoding.default, headers: headers).validate().responseJSON { (response: AFDataResponse<Any>) in
                     let value = response.value as! AuthorizationResponse
