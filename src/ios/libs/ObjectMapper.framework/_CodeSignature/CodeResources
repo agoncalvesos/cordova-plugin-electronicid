@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/ObjectMapper-Swift.h</key>
 		<data>
-		Sp4+i2iLSwzTcuz0bkNt/+7H46U=
+		DmdUAmdCCgPo7YQXGv3hOTTYDSc=
 		</data>
 		<key>Headers/ObjectMapper-umbrella.h</key>
 		<data>
@@ -16,37 +16,21 @@
 		<data>
 		CtV5YUvFfTK/o9Rp4IiddE35HP4=
 		</data>
-		<key>Modules/ObjectMapper.swiftmodule/i386-apple-ios-simulator.swiftdoc</key>
-		<data>
-		O/J856Ft4Hpu2OOjBVTZSB6xgQg=
-		</data>
-		<key>Modules/ObjectMapper.swiftmodule/i386-apple-ios-simulator.swiftmodule</key>
-		<data>
-		13zHJnUM+1Y9JS+0OfW0D+YhY7Y=
-		</data>
-		<key>Modules/ObjectMapper.swiftmodule/i386.swiftdoc</key>
-		<data>
-		O/J856Ft4Hpu2OOjBVTZSB6xgQg=
-		</data>
-		<key>Modules/ObjectMapper.swiftmodule/i386.swiftmodule</key>
-		<data>
-		13zHJnUM+1Y9JS+0OfW0D+YhY7Y=
-		</data>
 		<key>Modules/ObjectMapper.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		OxSRPRStMkZQDMO30XeIHJTpPPQ=
+		zRJ6GL2ET4O+tXahJvKEmJK9Pgg=
 		</data>
 		<key>Modules/ObjectMapper.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		dfXpCRgG3tSywcVpRKzIdC9Ic+8=
+		zeVKsT4J9t3s+bcdXdW0qA8RUrA=
 		</data>
 		<key>Modules/ObjectMapper.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		OxSRPRStMkZQDMO30XeIHJTpPPQ=
+		zRJ6GL2ET4O+tXahJvKEmJK9Pgg=
 		</data>
 		<key>Modules/ObjectMapper.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		dfXpCRgG3tSywcVpRKzIdC9Ic+8=
+		zeVKsT4J9t3s+bcdXdW0qA8RUrA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -59,11 +43,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Sp4+i2iLSwzTcuz0bkNt/+7H46U=
+			DmdUAmdCCgPo7YQXGv3hOTTYDSc=
 			</data>
 			<key>hash2</key>
 			<data>
-			JEPblUAcPbuhKpscZKgIEONrHcp6FZGe7htFRFS+E4s=
+			BxxZbrC0J8QisudRUFiPxq/ohJMRVoREAWHFDLGRgwg=
 			</data>
 		</dict>
 		<key>Headers/ObjectMapper-umbrella.h</key>
@@ -77,92 +61,48 @@
 			KSP6dXzwE14F72l8bdNh/v4SYXlPJdMPYAfXK5UMqJA=
 			</data>
 		</dict>
-		<key>Modules/ObjectMapper.swiftmodule/i386-apple-ios-simulator.swiftdoc</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			O/J856Ft4Hpu2OOjBVTZSB6xgQg=
-			</data>
-			<key>hash2</key>
-			<data>
-			hZVksU/pv/7AsjHhcCOjIyARpZGsjfgauT8dQSc4FFQ=
-			</data>
-		</dict>
-		<key>Modules/ObjectMapper.swiftmodule/i386-apple-ios-simulator.swiftmodule</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			13zHJnUM+1Y9JS+0OfW0D+YhY7Y=
-			</data>
-			<key>hash2</key>
-			<data>
-			wzDp1u3MzdQDp8rznxg2GU6aM3wClqU2LOE4RsUgTQI=
-			</data>
-		</dict>
-		<key>Modules/ObjectMapper.swiftmodule/i386.swiftdoc</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			O/J856Ft4Hpu2OOjBVTZSB6xgQg=
-			</data>
-			<key>hash2</key>
-			<data>
-			hZVksU/pv/7AsjHhcCOjIyARpZGsjfgauT8dQSc4FFQ=
-			</data>
-		</dict>
-		<key>Modules/ObjectMapper.swiftmodule/i386.swiftmodule</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			13zHJnUM+1Y9JS+0OfW0D+YhY7Y=
-			</data>
-			<key>hash2</key>
-			<data>
-			wzDp1u3MzdQDp8rznxg2GU6aM3wClqU2LOE4RsUgTQI=
-			</data>
-		</dict>
 		<key>Modules/ObjectMapper.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			OxSRPRStMkZQDMO30XeIHJTpPPQ=
+			zRJ6GL2ET4O+tXahJvKEmJK9Pgg=
 			</data>
 			<key>hash2</key>
 			<data>
-			V9MwK0tvI6+wi4pvsATUyXgaJwl0jqVb03BNOZnHtQQ=
+			YD8OmWh/dJPS7y5MehensOiDoksnFQ/Mw1B/arKJE3U=
 			</data>
 		</dict>
 		<key>Modules/ObjectMapper.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			dfXpCRgG3tSywcVpRKzIdC9Ic+8=
+			zeVKsT4J9t3s+bcdXdW0qA8RUrA=
 			</data>
 			<key>hash2</key>
 			<data>
-			mrhlkbB8F8kuTVnBKh44hZs6tRLIYSH7JRZ8FN34m6U=
+			LO9EGXV9p4ethGb9QM6aJFH0y7M63SMOQT9xC2Hqluo=
 			</data>
 		</dict>
 		<key>Modules/ObjectMapper.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			OxSRPRStMkZQDMO30XeIHJTpPPQ=
+			zRJ6GL2ET4O+tXahJvKEmJK9Pgg=
 			</data>
 			<key>hash2</key>
 			<data>
-			V9MwK0tvI6+wi4pvsATUyXgaJwl0jqVb03BNOZnHtQQ=
+			YD8OmWh/dJPS7y5MehensOiDoksnFQ/Mw1B/arKJE3U=
 			</data>
 		</dict>
 		<key>Modules/ObjectMapper.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			dfXpCRgG3tSywcVpRKzIdC9Ic+8=
+			zeVKsT4J9t3s+bcdXdW0qA8RUrA=
 			</data>
 			<key>hash2</key>
 			<data>
-			mrhlkbB8F8kuTVnBKh44hZs6tRLIYSH7JRZ8FN34m6U=
+			LO9EGXV9p4ethGb9QM6aJFH0y7M63SMOQT9xC2Hqluo=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
