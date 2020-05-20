@@ -5,7 +5,7 @@
         <clobbers target="CordovaElectronicId" />
     </js-module>
 
-    <dependency id="cordova-plugin-cocoapod-support" url="https://github.com/agoncalvesos/cordova-plugin-cocoapods-support.git"/>
+    <!--<dependency id="cordova-plugin-cocoapod-support" url="https://github.com/agoncalvesos/cordova-plugin-cocoapods-support.git"/>-->
 
     <platform name="ios">
 
