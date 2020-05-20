@@ -14,7 +14,7 @@
 
         <!--<hook type="before_plugin_install" src="hooks/pods_fix.js" />-->
         <!--<hook type="before_prepare" src="hooks/pods_fix.js" />-->
-        <hook type="before_build" src="hooks/iOSBeforeBuild.js" />
+        <!--<hook type="before_build" src="hooks/iOSBeforeBuild.js" />-->
 
         <config-file parent="/*" target="config.xml">
             <feature name="CordovaElectronicId">
@@ -195,7 +195,8 @@
         <pod name="PureeOS" spec="2.0.1.OS5"/>-->
         <!--<pod name="VideoID" spec="7.0.11" />-->
         <!--<pod name="VideoID" spec="7.1.0" />-->
-        <pod name="webrtc-bitcode" git="https://github.com/cafexcomms/webrtc-bitcode" />
+        <!--<pod name="eIDWebRTC.bitcode" spec="60.0.19018" />-->
+        <pod name="webrtc-bitcode" git="https://github.com/cafexcomms/webrtc-bitcode.git" />
         <!--<pod name="GoogleWebRTC" />-->
 
         <framework src="src/ios/libs/Alamofire.framework" target-dir="lib" framework="true" />

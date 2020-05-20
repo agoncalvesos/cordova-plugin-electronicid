@@ -76,7 +76,7 @@ class ElectronicIDWrapper: NSObject {
 
         let headers : HTTPHeaders = [
             "Authorization": "Bearer " + self.bearer,
-            "Content-type" : "application/json"
+            "Accept" : "application/json"
         ]
         AF.request(cleanPath, method: .post, parameters: request.toJSON(),
                    encoding: JSONEncoding.default, headers: headers).validate().responseJSON { (response: AFDataResponse<Any>) in
