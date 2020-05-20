@@ -5,7 +5,7 @@
         <clobbers target="CordovaElectronicId" />
     </js-module>
 
-    <dependency id="cordova-plugin-cocoapod-support" url="https://github.com/agoncalvesos/cordova-plugin-cocoapods-support.git"/>
+    <!--<dependency id="cordova-plugin-cocoapod-support" url="https://github.com/agoncalvesos/cordova-plugin-cocoapods-support.git"/>-->
 
     <platform name="ios">
 
@@ -185,17 +185,17 @@
         <pod id="VideoID" version="7.0.11"/>-->
 
          <!--<pods-config ios-min-version="11.0" use-frameworks="true" use-modular-headers="true">-->
-        <pods-config use-frameworks="true">
+        <!--<pods-config use-frameworks="true">-->
             <!-- optionally add private spec sources -->
             <!--<source url="https://github.com/CocoaPods/Specs.git"/>-->
-        </pods-config>
+        <!--</pods-config>-->
 
         <!--<pod name="FLEX" git="https://github.com/OutSystems/FLEX/" tag="3.0.0-OS3" spec=":configurations => ['Debug']"  />
         <pod name="CocoaLumberjack" spec="2.4.0"/>
         <pod name="PureeOS" spec="2.0.1.OS5"/>-->
         <!--<pod name="VideoID" spec="7.0.11" />-->
         <!--<pod name="VideoID" spec="7.1.0" />-->
-        <pod name="eIDWebRTC.bitcode" spec="60.0.19018" />
+        <!--<pod name="eIDWebRTC.bitcode" spec="60.0.19018" />-->
         <!--<pod name="webrtc-bitcode" git="https://github.com/cafexcomms/webrtc-bitcode.git" />-->
 
         <framework src="src/ios/libs/Alamofire.framework" target-dir="lib" framework="true" />
@@ -210,6 +210,8 @@
         <framework src="src/ios/libs/VideoID.framework" embed="true" custom="true" />
         <!--<framework src="src/ios/libs/WebRTC.framework" target-dir="lib" framework="true" />
         <framework src="src/ios/libs/WebRTC.framework" embed="true" custom="true" />-->
+        <framework src="./Pods/eIDWebRTC.bitcode" target-dir="lib" framework="true" />
+        <framework src="./Pods/eIDWebRTC.bitcode" embed="true" custom="true" />
 
     </platform>
 
