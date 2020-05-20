@@ -5,7 +5,7 @@
         <clobbers target="CordovaElectronicId" />
     </js-module>
 
-    <!--<dependency id="cordova-plugin-cocoapod-support" url="https://github.com/agoncalvesos/cordova-plugin-cocoapods-support.git"/>-->
+    <dependency id="cordova-plugin-cocoapod-support" url="https://github.com/agoncalvesos/cordova-plugin-cocoapods-support.git"/>
 
     <platform name="ios">
 
@@ -195,7 +195,7 @@
         <pod name="PureeOS" spec="2.0.1.OS5"/>-->
         <!--<pod name="VideoID" spec="7.0.11" />-->
         <!--<pod name="VideoID" spec="7.1.0" />-->
-        <!--<pod name="eIDWebRTC.bitcode" spec="60.0.19018" />-->
+        <pod name="eIDWebRTC.bitcode" spec="60.0.19018" />
         <!--<pod name="webrtc-bitcode" git="https://github.com/cafexcomms/webrtc-bitcode.git" />-->
 
         <framework src="src/ios/libs/Alamofire.framework" target-dir="lib" framework="true" />
