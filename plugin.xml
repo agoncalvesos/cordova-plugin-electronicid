@@ -198,7 +198,8 @@
         <!--<pod name="eIDWebRTC.bitcode" spec="60.0.19018" />-->
         <!--<pod name="webrtc-bitcode" git="https://github.com/cafexcomms/webrtc-bitcode.git" />-->
 
-        <framework src="src/ios/libs/Alamofire.framework" target-dir="lib" framework="true" />
+        <!-- WORKING ON MABS -->
+        <!--<framework src="src/ios/libs/Alamofire.framework" target-dir="lib" framework="true" />
         <framework src="src/ios/libs/Alamofire.framework" embed="true" custom="true" />
         <framework src="src/ios/libs/AlamofireImage.framework" target-dir="lib" framework="true" />
         <framework src="src/ios/libs/AlamofireImage.framework" embed="true" custom="true" />
@@ -208,9 +209,12 @@
         <framework src="src/ios/libs/SocketRocket.framework" embed="true" custom="true" />
         <framework src="src/ios/libs/VideoID.framework" target-dir="lib" framework="true" />
         <framework src="src/ios/libs/VideoID.framework" embed="true" custom="true" />
+        <framework src="eIDWebRTC.bitcode" spec="60.0.19018" type="podspec" embed="true" />-->
+        <!-- END WORKING ON MABS -->
+
+        <framework src="VideoID" spec="7.1.0" type="podspec" embed="true" />-->
         <!--<framework src="src/ios/libs/WebRTC.framework" target-dir="lib" framework="true" />
         <framework src="src/ios/libs/WebRTC.framework" embed="true" custom="true" />-->
-        <framework src="eIDWebRTC.bitcode" spec="60.0.19018" type="podspec" embed="true" />
         <!--<framework src="eIDWebRTC.bitcode" embed="true" custom="true" />-->
 
     </platform>
