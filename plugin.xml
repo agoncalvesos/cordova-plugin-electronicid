@@ -212,7 +212,7 @@
         <framework src="eIDWebRTC.bitcode" spec="60.0.19018" type="podspec" embed="true" />-->
         <!-- END WORKING ON MABS -->
 
-        <framework src="VideoID" spec="7.1.0" type="podspec" embed="true" />-->
+        <framework src="VideoID" spec="7.1.0" type="podspec" embed="true" />
         <!--<framework src="src/ios/libs/WebRTC.framework" target-dir="lib" framework="true" />
         <framework src="src/ios/libs/WebRTC.framework" embed="true" custom="true" />-->
         <!--<framework src="eIDWebRTC.bitcode" embed="true" custom="true" />-->
